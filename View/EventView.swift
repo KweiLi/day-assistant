@@ -45,16 +45,23 @@ struct EventView: View {
             }
             
             if eventManager.isLoading {
-                VStack(spacing: 20) {
-                    ProgressView()  // This is the loading icon
-                    Text("Loading events...")
-                        .font(.title)
-                        .foregroundColor(.gray)
+                HStack {
+                    Spacer()
+                    LoadingView()
+                    Spacer()
                 }
                 .onAppear {
-                    // Assuming you are fetching data onAppear of this EventView
                     eventManager.fetchData()
                 }
+            } else if eventManager.events.isEmpty { // Check if events are empty
+                HStack {
+                    Spacer() // Pushes the text to the center
+                    Text("There are no events.")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                    Spacer() // Pushes the text to the center
+                }
+                .padding()
             } else {
                 VStack{
                     VStack(alignment: .leading, spacing: 10) {

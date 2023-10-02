@@ -56,7 +56,7 @@ struct ToDoView: View {
                             }) {
                                 Image(systemName: "delete.left.fill")
                                     .font(.system(size: 25))
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.gray)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
